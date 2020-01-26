@@ -1,0 +1,7 @@
+keras
+matplotlib
+scikit-learn
+nltk
+xlswriter
+telepot
+wordcloud
