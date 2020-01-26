@@ -2,9 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b334214f-f085-4185-b9cf-111af0088f3b" name="Default" comment="Small changes">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TCProg.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TCProg.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/classification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_files_creator/config_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/config_files_creator/config_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/confusion_matrix.py" beforeDir="false" afterPath="$PROJECT_DIR$/confusion_matrix.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature_selction.py" beforeDir="false" afterPath="$PROJECT_DIR$/feature_selction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features.py" beforeDir="false" afterPath="$PROJECT_DIR$/features.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/help_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/help_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/new_xlsx_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/new_xlsx_file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normalization.py" beforeDir="false" afterPath="$PROJECT_DIR$/normalization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/notification_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/precision_recall_curve.py" beforeDir="false" afterPath="$PROJECT_DIR$/precision_recall_curve.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roc_curve.py" beforeDir="false" afterPath="$PROJECT_DIR$/roc_curve.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/system_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/terms_frequency_counts.py" beforeDir="false" afterPath="$PROJECT_DIR$/terms_frequency_counts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/words_cloud.py" beforeDir="false" afterPath="$PROJECT_DIR$/words_cloud.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/write_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/write_results.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,44 +48,6 @@
         <option value="Python Script" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>print</find>
-      <find>test</find>
-      <find>losses</find>
-      <find>global_parameters</find>
-      <find>global_parameters.</find>
-      <find>ממש</find>
-      <find>מלא</find>
-      <find>נכו</find>
-      <find>נכונים</find>
-      <find>תודה</find>
-      <find>hebrew</find>
-      <find>A1</find>
-      <find>word</find>
-      <find>glbs.LABELS</find>
-      <find>ww</find>
-      <find>ow</find>
-      <find>tw</find>
-      <find>names</find>
-      <find>get</find>
-      <find>get_feature_names</find>
-      <find>gen</find>
-      <find>אנורקסיה</find>
-      <find>nof</find>
-      <find>\n</find>
-      <find>cuf</find>
-      <find>alf</find>
-      <find>skf</find>
-      <find>frc</find>
-      <find>krc</find>
-      <find>dw</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>glbs</replace>
-      <replace>english</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -151,14 +129,14 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$USER_HOME$/python/anaconda3/envs/OffenseEval/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="env/cfgs" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -249,7 +227,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1528897087899</updated>
-      <workItem from="1580030198523" duration="388000" />
+      <workItem from="1580030198523" duration="2317000" />
     </task>
     <task id="LOCAL-00001" summary="added multinomial naive bayes to cfg creator">
       <created>1536747713208</created>
@@ -456,10 +434,62 @@
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580032512309">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1580032512309" />
+    <state x="432" y="65" key="#main" timestamp="1580030668143">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="432" y="65" key="#main/0.0.1440.900@0.0.1440.900" timestamp="1580030668143" />
+    <state width="1398" height="342" key="GridCell.Tab.0.bottom" timestamp="1580032677578">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="342" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1580032677578" />
+    <state width="1398" height="342" key="GridCell.Tab.0.center" timestamp="1580032677577">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="342" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1580032677577" />
+    <state width="1398" height="342" key="GridCell.Tab.0.left" timestamp="1580032677576">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="342" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1580032677576" />
+    <state width="1398" height="342" key="GridCell.Tab.0.right" timestamp="1580032677577">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="342" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1580032677577" />
+    <state width="1398" height="296" key="GridCell.Tab.1.bottom" timestamp="1580031194596">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="296" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1580031194596" />
+    <state width="1398" height="296" key="GridCell.Tab.1.center" timestamp="1580031194595">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="296" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1580031194595" />
+    <state width="1398" height="296" key="GridCell.Tab.1.left" timestamp="1580031194595">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="296" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1580031194595" />
+    <state width="1398" height="296" key="GridCell.Tab.1.right" timestamp="1580031194596">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="296" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1580031194596" />
+    <state x="229" y="89" key="SettingsEditor" timestamp="1580031202520">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1580031202520" />
     <state width="500" height="445" key="SwitcherDM" timestamp="1580030249478">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1580030249478" />
+    <state x="375" y="72" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1580032245742">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="375" y="72" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1580032245742" />
+    <state x="390" y="191" width="659" height="518" key="find.popup" timestamp="1580032525618">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="390" y="191" width="659" height="518" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1580032525618" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -488,6 +518,9 @@
         <watch expression="tuple(train)" language="Python" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TextClassificationScript$main.coverage" NAME="main Coverage Results" MODIFIED="1580032677568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">

@@ -165,10 +165,11 @@ def gen_file_path():
     for method in glbs.METHODS:
         name += method.upper()
         name += "@"
-    folder_path = "\\".join(glbs.RESULTS_PATH.split("\\")[:-1]) + "\\temp_backups"
+
+    folder_path = os.sep.join(glbs.RESULTS_PATH.split(os.sep)[:-1]) + os.sep + "temp_backups"
     if not os.path.exists(folder_path):
         os.mkdir(folder_path)
-    return folder_path + "\\" + name + ".pickle"
+    return os.path.join(folder_path, name) + ".pickle"
 
 
 def save_backup_file(data, path):

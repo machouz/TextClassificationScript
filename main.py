@@ -2,6 +2,7 @@ import json
 import os
 import shutil
 import traceback
+import sys
 
 from classification import classify
 from feature_selction import get_selected_features
@@ -27,12 +28,12 @@ def set_global_parameters(configs):
     glbls.RESULTS_PATH = config["results"]
     glbls.MEASURE = config["measure"]
     glbls.STYLISTIC_FEATURES = config["stylistic_features"]
-    glbls.SELECTION = config["selection"].items()
+    glbls.SELECTION = config["selection"].items() if "selection" in config else []
     try:
         if 'language' in config:
             glbls.LANGUAGE = config['language']
         else:
-            path = config["train"] + "\\" + os.listdir(config["train"])[0]
+            path = os.path.join(config["train"], os.listdir(config["train"])[0])
             glbls.LANGUAGE = text_language(open(path, "r", encoding="utf8", errors='replace').read())
     except:
         glbls.LANGUAGE = "english"
@@ -161,7 +162,7 @@ def get_cfg_files(dir):
     items = []
     for file in os.listdir(dir):
         if file.endswith(".json"):
-            with open(dir + "\\" + file, "r", encoding="utf8", errors="replace") as f:
+            with open(os.path.join(dir, file), "r", encoding="utf8", errors="replace") as f:
                 items.append((file.replace(".json", ""), json.load(f)))
     return items
 
@@ -169,12 +170,12 @@ def get_cfg_files(dir):
 def clean_backup_files():
     glbs = GlobalParameters()
     print_message("removing temp files...")
-    folder_path = "\\".join(glbs.RESULTS_PATH.split("\\")[:-1]) + "\\temp_backups"
+    folder_path = os.sep.join(glbs.RESULTS_PATH.split(os.sep)[:-1]) + os.sep + "temp_backups"
     shutil.rmtree(folder_path, ignore_errors=True)
 
 
 if __name__ == "__main__":
-    cfg_dir = r"C:\Users\Mickey\Documents\kerner\textclassificationscript\cfgs"
+    cfg_dir =  sys.argv[1] if len(sys.argv) > 1 else r"C:\Users\Mickey\Documents\kerner\textclassificationscript\cfgs"
     if not os.path.exists(cfg_dir):
         cfg_dir = r"C:\Users\user\Documents\test\cfgs"
     main(cfg_dir)

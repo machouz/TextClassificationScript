@@ -1,3 +1,4 @@
+import os
 from itertools import cycle
 
 import matplotlib.pyplot as plt
@@ -32,5 +33,5 @@ def plot_roc_curve(data, result_path, method, title=None):
     plt.ylabel('True Positive Rate')
     plt.legend(loc="lower right")
 
-    plt.savefig(result_path + "\\" + title + '.jpg')
+    plt.savefig(os.path.join(result_path, title) + '.jpg')
     plt.close('all')

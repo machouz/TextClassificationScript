@@ -30,13 +30,13 @@ def generate_word_clouds(max_words=200):
     training = {}
     for file in os.listdir(training_path):
         if file.endswith('.txt'):
-            training[file.replace('.txt', '')] = open(training_path + "\\" + file, "r", encoding="utf8",
+            training[file.replace('.txt', '')] = open(os.path.join(training_path, file), "r", encoding="utf8",
                                                       errors='replace').readlines()
 
     testing = {}
     for file in os.listdir(testing_path):
         if file.endswith('.txt'):
-            testing[file.replace('.txt', '')] = open(testing_path + "\\" + file, "r", encoding="utf8",
+            testing[file.replace('.txt', '')] = open(os.path.join(testing_path, file), "r", encoding="utf8",
                                                      errors='replace').readlines()
 
     if text_language(testing[list(testing.keys())[0]][0]) == 'hebrew':
@@ -85,7 +85,7 @@ def generate_and_save(freq, max_words, result_path, stop_words, title):
     plt.axis("off")
     plt.tight_layout(pad=0)
 
-    plt.savefig(result_path + "\\" + title + '.jpg', format='jpg')
+    plt.savefig(os.path.join(result_path, title) + '.jpg', format='jpg')
     plt.close('all')
 
 

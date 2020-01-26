@@ -1,12 +1,10 @@
-import numpy as np
+import os
+
 import matplotlib.pyplot as plt
-import pandas as pd
-
+import numpy as np
 from sklearn import svm, datasets
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, accuracy_score
-from sklearn.utils.multiclass import unique_labels
-
+from sklearn.model_selection import train_test_split
 
 # import some data to play with
 from global_parameters import GlobalParameters
@@ -65,7 +63,7 @@ def plot_confusion_matrix(cm, result_path, normalize=True, title=None, accuracy=
         plt.title('Accuracy Score: ' + str(accuracy) + '\nConfusion Matrix:')
         plt.rcParams.update({"text.color": color})
 
-    plt.savefig(result_path + "\\" + title + '.jpg', bbox_inches='tight')
+    plt.savefig(os.path.join(result_path, title) + '.jpg', bbox_inches='tight')
 
 
     plt.close('all')

@@ -80,7 +80,7 @@ def word_freq(corpus_path, out_path, ngrams, show_amaount=True):
         i += 1
 
     # save the words into the output path
-    title = "\\" + corpus_path.split('\\')[-1].split('.')[0] + " most freq words " + {2:"bigrams", 1:"unigrams", 3:"trigrams"}[ngrams] + ".txt"
+    title = os.sep + corpus_path.split(os.sep)[-1].split('.')[0] + " most freq words " + {2:"bigrams", 1:"unigrams", 3:"trigrams"}[ngrams] + ".txt"
     with open(out_path + title, "w", encoding="utf8", errors='replace') as file:
         file.write(result[1:])
 
@@ -90,4 +90,4 @@ if __name__ == '__main__':
     out_path = r"C:\Users\user\Documents\test\מילים"
     for file in os.listdir(in_path):
         for num in [1, 2]:
-            word_freq(in_path + '\\' + file, out_path, num)
+            word_freq(in_path + os.sep + file, out_path, num)

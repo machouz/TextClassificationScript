@@ -1,5 +1,6 @@
 import itertools
 import json
+import os
 
 norm = "LHSCTMRP"
 
@@ -176,7 +177,7 @@ if __name__ == '__main__':
 	for n in nargs:
 		data = {"train": train, "test": test, "output_csv": output_path, "nargs": ''.join(sorted(list(n))), "features": features,
 				"results": results, "methods": methods, "measure": measure, "stylistic_features": stylistic_features}
-		name = write_dir + "\\config" + str(i) + ".json"
+		name = write_dir + os.sep +"config" + str(i) + ".json"
 		with open(name, "w+") as file:
 			json.dump(data, file, indent=4)
 		i += 1

@@ -24,19 +24,19 @@ def write_results(results):
     glbs = GlobalParameters()
     print_message("Writing results...")
 
-    pickle_path = glbs.RESULTS_PATH + "\\Pickle files"
+    pickle_path = os.path.join(glbs.RESULTS_PATH, "Pickle files")
     if path.exists(pickle_path):
         shutil.rmtree(pickle_path, ignore_errors=True)
     os.makedirs(pickle_path)
 
-    xlsx_path = glbs.RESULTS_PATH + "\\Xlsx files"
+    xlsx_path = os.path.join(glbs.RESULTS_PATH, "Xlsx files")
     if path.exists(xlsx_path):
         shutil.rmtree(xlsx_path, ignore_errors=True)
     time.sleep(0.5)
     os.makedirs(xlsx_path)
 
     for key in results.keys():
-        with open(pickle_path + "\\" + key + ".pickle", "wb+") as file:
+        with open(os.path.join(pickle_path, key)+ ".pickle", "wb+") as file:
             pickle.dump(results[key], file)
-        new_write_file_content(pickle_path + "\\" + key + ".pickle", key, xlsx_path)
+        new_write_file_content(os.path.join(pickle_path, key) + ".pickle", key, xlsx_path)
 

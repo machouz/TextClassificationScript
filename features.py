@@ -33,7 +33,7 @@ def read_dataset(path):
     data = []
     for category in os.listdir(path):
         with open(
-            path + "\\" + category, "r+", encoding="utf8", errors="ignore"
+            os.path.join(path, category), "r+", encoding="utf8", errors="ignore"
         ) as read:
             for example in read:
                 record = example.rstrip("\n")

@@ -1,3 +1,5 @@
+import os
+
 from sklearn.metrics import precision_recall_curve
 import matplotlib.pyplot as plt
 from inspect import signature
@@ -27,5 +29,5 @@ def plot_precision_recall_curve(prc, result_path, title=None):
     plt.ylim([0.0, 1.05])
     plt.xlim([0.0, 1.0])
 
-    plt.savefig(result_path + "\\" + title + '.jpg', bbox_inches='tight')
+    plt.savefig(os.path.join(result_path, title) + '.jpg', bbox_inches='tight')
     plt.close('all')

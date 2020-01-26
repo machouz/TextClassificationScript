@@ -16,7 +16,7 @@ def create_dataset(dir, output, split = 0.33):
     normal = []
     for file in os.listdir(dir):
         if file.endswith('.json'):
-            with open(dir + "\\" + file, "r", encoding="utf8", errors='replace') as f:
+            with open(os.path.join(dir, file), "r", encoding="utf8", errors='replace') as f:
                 if json.load(f)["classification"] == "anorexia":
                     anorexia = anorexia + [file]
                 else:
@@ -34,19 +34,19 @@ def create_dataset(dir, output, split = 0.33):
     # save the content of the anorexia test
     text = ''
     for file in test:
-        with open(dir + "\\" + file, "r+", encoding="utf8", errors='replace') as f:
+        with open(os.path.join(dir, file), "r+", encoding="utf8", errors='replace') as f:
             dic = json.load(f)
-            text += '\n' + open(dir + "\\" + dic["file_id"], "r", errors='replace', encoding='utf8').read().replace('\n', ' ')
-    with open(output + "\\testing\\anorexia.txt", "w", encoding="utf8", errors='replace') as file:
+            text += '\n' + open(os.path.join(dir, dic["file_id"]), "r", errors='replace', encoding='utf8').read().replace('\n', ' ')
+    with open(os.path.join(output, "testing", "anorexia.txt"), "w", encoding="utf8", errors='replace') as file:
         file.write(text[1:])
 
     # save the content of the anorexia train
     text = ''
     for file in train:
-        with open(dir + "\\" + file, "r+", encoding="utf8", errors='replace') as f:
+        with open(os.path.join(dir, file), "r+", encoding="utf8", errors='replace') as f:
             dic = json.load(f)
-            text += '\n' + open(dir + "\\" + dic["file_id"], "r", errors='replace', encoding='utf8').read().replace('\n', ' ')
-    with open(output + "\\training\\anorexia.txt", "w", encoding="utf8", errors='replace') as file:
+            text += '\n' + open(os.path.join(dir, dic["file_id"]), "r", errors='replace', encoding='utf8').read().replace('\n', ' ')
+    with open(os.path.join(output, "training", "anorexia.txt"), "w", encoding="utf8", errors='replace') as file:
         file.write(text[1:])
 
     print('Done saving the anorexia files')
@@ -59,19 +59,19 @@ def create_dataset(dir, output, split = 0.33):
     # save the content of the normal test
     text = ''
     for file in test:
-        with open(dir + "\\" + file, "r+", encoding="utf8", errors='replace') as f:
+        with open(os.path.join(dir, file), "r+", encoding="utf8", errors='replace') as f:
             dic = json.load(f)
-            text += '\n' + open(dir + "\\" + dic["file_id"], "r", errors='replace', encoding='utf8').read().replace('\n', ' ')
-    with open(output + "\\testing\\normal.txt", "w", encoding="utf8", errors='replace') as file:
+            text += '\n' + open(os.path.join(dir, dic["file_id"]), "r", errors='replace', encoding='utf8').read().replace('\n', ' ')
+    with open(os.path.join(output, "testing", "normal.txt"), "w", encoding="utf8", errors='replace') as file:
         file.write(text[1:])
 
     # save the content of the normal train
     text = ''
     for file in train:
-        with open(dir + "\\" + file, "r+", encoding="utf8", errors='replace') as f:
+        with open(os.path.join(dir, file), "r+", encoding="utf8", errors='replace') as f:
             dic = json.load(f)
-            text += '\n' + open(dir + "\\" + dic["file_id"], "r", errors='replace', encoding='utf8').read().replace('\n', ' ')
-    with open(output + "\\training\\normal.txt", "w", encoding="utf8", errors='replace') as file:
+            text += '\n' + open(os.path.join(dir, dic["file_id"]), "r", errors='replace', encoding='utf8').read().replace('\n', ' ')
+    with open(os.path.join(output, "training", "normal.txt"), "w", encoding="utf8", errors='replace') as file:
         file.write(text[1:])
 
     print('Done saving the normal files')
@@ -82,7 +82,7 @@ def create_dataset(dir, output, split = 0.33):
 def count_stopwords(path):
     text = ''
     for file in os.listdir(path):
-        with open(path + "\\" + file, "r", encoding="utf8", errors='replace') as f:
+        with open(os.path.join(path, file), "r", encoding="utf8", errors='replace') as f:
             text += f.read().replace('\n', ' ')
 
     for char in r".,;()[]{}:-–?!’'\"“”/&*@\\†‡°#~_|¦¶ˆ^•№§%‰‱¤$™®©":
@@ -110,18 +110,18 @@ def pre_results(test_data, path):
         for method in ['svc', 'rf', 'mlp', 'lr', 'mnb']:
             text += '!!' + method + str(hex(i)) + '!!\n'
         text += '\n'
-    with open(path + "\\result.txt", "w", encoding="utf8", errors='replace') as file:
+    with open(os.path.join(path, "result.txt"), "w", encoding="utf8", errors='replace') as file:
         file.write(text)
 
 
 def write_result(prediction, classifier, path):
     dic = {1: "normal", 0: "anorexia"}
     prediction = list(prediction)
-    with open(path + "\\result.txt", "r", encoding="utf8", errors='replace') as file:
+    with open(os.path.join(path, "result.txt"), "r", encoding="utf8", errors='replace') as file:
         text = file.read()
     for i, predict in enumerate(prediction):
         text = text.replace('!!' + classifier + str(hex(i)) + '!!', classifier + ': ' + dic[predict])
-    with open(path + "\\result.txt", "w", encoding="utf8", errors='replace') as file:
+    with open(os.path.join(path, "result.txt"), "w", encoding="utf8", errors='replace') as file:
         file.write(text)
 
 
@@ -147,7 +147,7 @@ def adapt_other_json(path_from, path_to):
     total_length = str(len([file for file in os.listdir(path_from) if file.endswith('.json')]))
     for file in os.listdir(path_from):
         if file.endswith('.json'):
-            with open(path_from + "\\" + file, "r", encoding="utf8", errors='replace') as f:
+            with open(os.path.join(path_from, file), "r", encoding="utf8", errors='replace') as f:
                 old_dic = json.load(f)
 
                 # For Hill Climbing only!
@@ -163,7 +163,7 @@ def adapt_other_json(path_from, path_to):
                            "stylistic_features": list(set(old_dic["stylistic_features"] + best)), "selection": {}}
                 if new_dic not in all_dics:
                     all_dics += [new_dic]
-                    with open(path_to + "\\" + file, 'w') as fp:
+                    with open(os.path.join(path_to, file), 'w') as fp:
                         json.dump(new_dic, fp, indent=4)
                         print('File ' + str(i) + '/' + total_length)
                 i += 1

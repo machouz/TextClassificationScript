@@ -1,3 +1,4 @@
+import os
 import smtplib
 import traceback
 
@@ -41,7 +42,7 @@ def send_notification(dataset, cfg=None, mode="mail"):
 			bot = telepot.Bot(BOT_TOKEN)
 			for user in USERS:
 			    bot.sendMessage(user, "{0}: {1} has finished extracting features".format(
-				                dataset, cfg[cfg.rfind("\\") + 1:] if cfg is not None else ""))
+				                dataset, cfg[cfg.rfind(os.sep) + 1:] if cfg is not None else ""))
 			
 	except Exception as e:
 		print("Failed to send notification", "send_notification")

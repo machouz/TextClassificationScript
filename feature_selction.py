@@ -98,7 +98,7 @@ def select_rfecv_sfm(selection, features, labels):
             plt.xlabel("Number of features selected")
             plt.ylabel("accuracy score" + key + " (nb of correct classifications)")
             plt.plot(range(1, len(recursive.grid_scores_) + 1), recursive.grid_scores_)
-            plt.savefig(glbs.RESULTS_PATH + "\\" + key + ".jpg", bbox_inches="tight")
+            plt.savefig(os.path.join(glbs.RESULTS_PATH, key) + ".jpg", bbox_inches="tight")
     if selection[0] == "sfm":
         score = {}
         for key, method in methods.items():

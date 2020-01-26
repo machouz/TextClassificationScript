@@ -61,7 +61,7 @@ def new_write_file_content(pickle_file_path, measure, results_path):
     # Setup the path and the name of the file
     dataset_name = corpus_name()
     pickle_file_content = open_pickle_content(pickle_file_path)
-    file_path = results_path + "\\" + measure.upper().replace('_', ' ') + " for " + dataset_name + '.xlsx'
+    file_path = os.path.join(results_path, measure.upper().replace('_', ' ')) + " for " + dataset_name + '.xlsx'
 
     # Create an new Excel file and add a worksheet.
     workbook = xlsxwriter.Workbook(file_path)
@@ -235,7 +235,7 @@ def new_write_file_content(pickle_file_path, measure, results_path):
                     worksheet.set_column(methods[method], methods[method], 40)
                     worksheet.set_row(row, 170)
                     best, maxes = find_maxes_best(best, maxes, method, methods, row, result)
-                worksheet.insert_image(row, methods[method], results_path + "\\" + title + ".jpg")
+                worksheet.insert_image(row, methods[method], os.path.join(results_path, title) + ".jpg")
                 image_num += 1
                 continue
 
@@ -263,7 +263,7 @@ def new_write_file_content(pickle_file_path, measure, results_path):
                     title = measure + str(image_num)
                     plot_confusion_matrix(val[2]["matrix"], results_path, title=title, accuracy=val[2]["accuracy"],
                                           cmap=plt.cm.Blues, color='blue')
-                    worksheet.insert_image(val[0], val[1], results_path + "\\" + title + ".jpg")
+                    worksheet.insert_image(val[0], val[1], os.path.join(results_path, title) + ".jpg")
             else:
                 worksheet.write(val[0], val[1], val[2], good)
 
@@ -280,7 +280,7 @@ def new_write_file_content(pickle_file_path, measure, results_path):
                 title = measure + str(image_num)
                 plot_confusion_matrix(val[2]["matrix"], results_path, title=title, accuracy=val[2]["accuracy"],
                                       cmap=plt.cm.Reds, color='red')
-                worksheet.insert_image(val[0], val[1], results_path + "\\" + title + ".jpg")
+                worksheet.insert_image(val[0], val[1], os.path.join(results_path, title + ".jpg"))
         else:
             worksheet.write(val[0], val[1], val[2], good)
 
@@ -311,7 +311,7 @@ def new_write_file_content(pickle_file_path, measure, results_path):
     # Delete the images of the non integer measures
     for file in os.listdir(results_path):
         if file.endswith('.jpg'):
-            os.remove(results_path + "\\" + file)
+            os.remove(os.path.join(results_path, file))
 
 
 def find_maxes_best(best, maxes, method, methods, row, val):
@@ -354,7 +354,7 @@ def find_maxes_best_(best, maxes, method, methods, row, val):
     return best, maxes
 
 def write_info_gain(features, name):
-    file_path = GlobalParameters().RESULTS_PATH + "\\" + name + " for hebrew dataset" + '.xlsx'
+    file_path = os.path.join(GlobalParameters().RESULTS_PATH, name + " for hebrew dataset" + '.xlsx')
     # Create an new Excel file and add a worksheet.
     workbook = xlsxwriter.Workbook(file_path)
     worksheet = workbook.add_worksheet()
@@ -378,7 +378,7 @@ def write_info_gain(features, name):
     workbook.close()
 
 def write_sfm(score):
-    file_path = GlobalParameters().RESULTS_PATH + "\\" + "sfm" + " for hebrew dataset" + '.xlsx'
+    file_path = os.path.join(GlobalParameters().RESULTS_PATH, "sfm" + " for hebrew dataset" + '.xlsx')
     # Create an new Excel file and add a worksheet.
     workbook = xlsxwriter.Workbook(file_path)
     worksheet = workbook.add_worksheet()

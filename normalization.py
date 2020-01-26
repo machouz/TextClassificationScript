@@ -313,7 +313,7 @@ def normalize(test=False):
 		if not os.path.exists(parent_dir):
 			os.mkdir(parent_dir)
 			for category in os.listdir(i):
-				with open(i + "\\" + category, 'r', encoding='utf8', errors='ignore') as read:
+				with open(os.path.join(i, category), 'r', encoding='utf8', errors='ignore') as read:
 					n_lines = []
 					for line in read:
 						line = line.rstrip('\n')
@@ -321,7 +321,7 @@ def normalize(test=False):
 				n_file = '\n'.join(n_lines)
 				del n_lines
 				# write normalized_file
-				with open(parent_dir + "\\" + category, 'w+', encoding='utf8') as write:
+				with open(os.path.join(parent_dir, category), 'w+', encoding='utf8') as write:
 					write.write(n_file)
 				del n_file
 		else:  # if it does exist
