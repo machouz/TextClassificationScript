@@ -72,7 +72,7 @@ def add_results(old_results):
     glbs = GlobalParameters()
     temp = {}
     temp["results"] = old_results[glbs.FILE_NAME]
-    temp["featurs"] = glbs.FEATURES
+    temp["features"] = glbs.FEATURES
     temp["normalization"] = glbs.NORMALIZATION
     temp["stylistic_features"] = glbs.STYLISTIC_FEATURES
     old_results[glbs.FILE_NAME] = temp
@@ -102,7 +102,7 @@ def divide_results(result):
         for method, score in dic["results"].items():
             for measure, value in score.items():
                 new_result[measure][config_name]["results"][method] = value
-                new_result[measure][config_name]["featurs"] = dic["featurs"]
+                new_result[measure][config_name]["features"] = dic["features"]
                 new_result[measure][config_name]["normalization"] = dic["normalization"]
                 new_result[measure][config_name]["stylistic_features"] = dic[
                     "stylistic_features"
@@ -141,7 +141,7 @@ def main(cfg):
                 except:
                     pass
             results[glbs.FILE_NAME] = classify(
-                train, tr_labels, test, ts_labels, all_features
+                train, tr_labels, test, ts_labels, all_features, model_number=i
             )
             results = add_results(results)
         if glbs.WORDCLOUD:
@@ -175,7 +175,7 @@ def clean_backup_files():
 
 
 if __name__ == "__main__":
-    cfg_dir =  sys.argv[1] if len(sys.argv) > 1 else r"C:\Users\Mickey\Documents\kerner\textclassificationscript\cfgs"
+    cfg_dir = sys.argv[1] if len(sys.argv) > 1 else r"C:\Users\Mickey\Documents\kerner\textclassificationscript\cfgs"
     if not os.path.exists(cfg_dir):
         cfg_dir = r"C:\Users\user\Documents\test\cfgs"
     main(cfg_dir)

@@ -3,10 +3,8 @@
 # from keras.preprocessing import sequence
 # from keras.preprocessing.text import Tokenizer
 import os
-
 import pickle
 
-from array import array
 from keras import Sequential
 from keras.layers import (
     Embedding,
@@ -17,40 +15,24 @@ from keras.layers import (
     Dense,
     Dropout,
 )
-import matplotlib.pyplot as plt
-from keras_preprocessing.sequence import pad_sequences
-from sklearn.svm import LinearSVC
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import f1_score
-from sklearn.metrics import roc_curve
-from sklearn.metrics import roc_auc_score
-from sklearn.metrics import recall_score
 from sklearn.metrics import precision_score
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.neural_network import MLPClassifier
-from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import recall_score
+from sklearn.metrics import roc_auc_score
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import LabelEncoder
-from tensorflow import one_hot
+from sklearn.svm import LinearSVC
 
 from confusion_matrix import accuracy_confusion_matrix
-from features import get_data
 from global_parameters import print_message, GlobalParameters
-from help_functions import write_result
+from model_persistence import save_model
 from precision_recall_curve import precision_recall
 from roc_curve import roc_curve_data
-from sklearn.feature_selection import (
-    chi2,
-    mutual_info_classif,
-    f_classif,
-    RFECV,
-    mutual_info_regression,
-    SelectKBest,
-)
-from sklearn.model_selection import StratifiedKFold
-from sklearn.preprocessing import LabelEncoder
-from new_xlsx_file import write_info_gain
 
 glbs = GlobalParameters()
 
@@ -82,7 +64,7 @@ def get_results(ts_labels, prediction, decision):
     # return stats
 
 
-def classify(train, tr_labels, test, ts_labels, all_features, num_iteration=1):
+def classify(train, tr_labels, test, ts_labels, all_features, num_iteration=1, model_number=0):
     results = {}
     result = []
     le = LabelEncoder()
@@ -116,6 +98,8 @@ def classify(train, tr_labels, test, ts_labels, all_features, num_iteration=1):
 
             result = get_results(ts_labels, prediction, decision)
 
+        model_path = os.path.join(glbs.RESULTS_PATH, "Model " + classifier + str(model_number))
+        save_model(clf, model_path)
         del clf
 
         results[classifier] = result

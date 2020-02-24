@@ -1,13 +1,10 @@
 import os
 import pickle
-from datetime import datetime
 import sys
+from datetime import datetime
+
 import matplotlib.pyplot as plt
 import xlsxwriter
-
-from os import path
-
-from PIL import Image
 
 from confusion_matrix import plot_confusion_matrix
 from global_parameters import GlobalParameters
@@ -149,7 +146,7 @@ def new_write_file_content(pickle_file_path, measure, results_path):
     # Write the result
     row = 40
     kind = {'w': 'Words', 'c': 'Chars'}
-    ngrams = {'1': 'Unigrams', '2': 'Bigrams', '3': 'Trigrams'}
+    ngrams = {'1': 'Unigrams', '2': 'Bigrams', '3': 'Trigrams', '4': '4-gram'}
     tf = {'tf': 'TF', 'tfidf': 'TF-IDF'}
     methods = {'svc': 8, 'rf': 9, 'mlp': 10, 'lr': 11, 'mnb': 12, 'rnn': 13}
 
@@ -170,7 +167,7 @@ def new_write_file_content(pickle_file_path, measure, results_path):
         cell_format.set_text_wrap()
         cell_format.set_align('vcenter')
         cell_format.set_align('center')
-        features = value['featurs']
+        features = value['features']
         count = ''
         type = ''
         tfidf = ''
@@ -178,6 +175,7 @@ def new_write_file_content(pickle_file_path, measure, results_path):
         skips = ''
         for feature in features:
             feature = feature.split('_')
+            print(feature)
             count += feature[1] + '\n'
             type += kind[feature[2]] + '\n'
             tfidf += tf[feature[3]] + '\n'
